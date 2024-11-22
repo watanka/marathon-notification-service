@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "runnersclub"
+version = "0.1.0"
+description = ""
+authors = ["eunsung"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+bs4 = "^0.0.2"
+requests = "^2.32.3"
+pandas = "^2.2.3"
+fastapi = "^0.115.5"
+pytest = "^8.3.3"
+sqlalchemy = "^2.0.36"
+psycopg2-binary = "^2.9.10"
+python-dotenv = "^1.0.1"
+uvicorn = "^0.32.0"
+pykakao = "^0.0.7"
+twilio = "^9.3.7"
+telegram = "^0.0.1"
+pydantic-settings = "^2.6.1"
+boto3 = "^1.35.66"
+google = "^3.0.0"
+google-api-python-client = "^2.154.0"
+google-auth-httplib2 = "^0.2.0"
+google-auth-oauthlib = "^1.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,27 @@
+FROM public.ecr.aws/lambda/python:3.11
+
+
+ENV DEPLOY_ENV=awslambda \
+    AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+    AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+
+# Poetry 설치
+RUN pip install poetry
+
+# PostgreSQL 클라이언트 설치
+RUN yum install -y postgresql-devel
+
+# Poetry 가상 환경 비활성화 (Docker 내부에서는 불필요)
+RUN poetry config virtualenvs.create false
+
+# 의존성 파일 복사
+COPY pyproject.toml poetry.lock ./
+
+# 의존성 설치
+RUN poetry install --no-dev
+
+# 소스 코드 복사
+COPY . .
+
+# Lambda 핸들러 설정
+CMD [ "awslambda.notification_lambda.lambda_handler" ]
